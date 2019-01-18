@@ -11,17 +11,23 @@ import (
 var i = 0
 
 func incrementing() {
-    //TODO: increment i 1000000 times
+	for index := 0; index < 1000000; index++ {
+		i++
+	}
 }
 
 func decrementing() {
-    //TODO: decrement i 1000000 times
+	for index := 0; index < 1000000; index++ {
+		i--
+	}
 }
 
 func main() {
     runtime.GOMAXPROCS(runtime.NumCPU())    // I guess this is a hint to what GOMAXPROCS does...
 	                                    // Try doing the exercise both with and without it!
 
+	go incrementing()
+	go decrementing()
     // TODO: Spawn both functions as goroutines
 	
     // We have no way to wait for the completion of a goroutine (without additional syncronization of some sort)
